@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кумедія!</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <h1 id="title">Кумедія!</h1>
+        <button id="lang-btn" onclick="toggleLanguage()" title="Змінити мову / Change language">
+            <svg xmlns="http://www.w3.org/2000/svg" height="32" viewBox="0 -960 960 960" width="32" fill="currentColor">
+                <path d="m476-80 182-480h84L924-80h-84l-43-122H603L560-80h-84ZM160-200l-56-56 202-202q-35-35-63.5-80T190-640h84q20 39 40 68t48 58q36-36 68-79.5t54-81.5H160v-80h280v-80h80v80h280v80H536q-21 56-60.5 117T364-414q51 51 118 102.5T620-222l-56 56q-56-42-132-96.5T310-388l-150 188Zm478-280h168l-84-236-84 236Z"/>
+            </svg>
+        </button>
+    </header>
+
+    <main>
+        <section id="landing-screen">
+            <p id="subtitle" class="subtitle">Кидай кубик. Розгадуй слова.</p>
+            <button id="start-btn" class="btn" onclick="startDiceRoll()">Почати гру</button>
+        </section>
+
+        <section id="dice-screen">
+            <h2 id="rolling-msg">Кидаємо на довжину слова...</h2>
+            <mark id="chip">?</mark>
+        </section>
+
+        <section id="game-screen">
+            <section id="grid"></section>
+            <output id="message"></output>
+        </section>
+    </main>
+
+    <footer>
+        <section id="keyboard"></section>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
