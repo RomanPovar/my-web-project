@@ -139,21 +139,20 @@ footer {
     display: grid;
     gap: 5px;
     margin-bottom: 10px;
-    width: 100%;
-    max-width: 450px;
+    justify-content: center;
+    width: fit-content; /* Забороняємо сітці розтягуватися на всю ширину */
+    margin-inline: auto;
 }
 
 .cell {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    max-height: 8.5vh; /* Магія №1: клітинка ніколи не перевищить 8.5% висоти екрана */
-    max-width: 65px; /* Магія №2: обмеження для великих моніторів ПК */
-    margin: auto; /* Центрує клітинку всередині колонки, якщо вона стиснулася */
+    /* Розмір завжди стабільний! Залежить від екрана, а не від кількості літер */
+    width: clamp(28px, min(9vw, 7vh), 65px);
+    height: clamp(28px, min(9vw, 7vh), 65px);
     border: 2px solid rgba(255,255,255,0.2);
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: clamp(1.2rem, 5vw, 2rem);
+    font-size: clamp(1.2rem, 5vw, 2.2rem);
     font-weight: bold;
     text-transform: uppercase;
     background: rgba(0,0,0,0.2);
