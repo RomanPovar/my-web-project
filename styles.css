@@ -30,7 +30,7 @@ header {
 
 header h1 {
     margin: 0;
-    font-size: clamp(1.8rem, 6vw, 2.5rem); /* Адаптивний заголовок */
+    font-size: clamp(1.8rem, 6vw, 2.5rem);
     text-transform: uppercase;
     letter-spacing: 5px;
     color: var(--gold);
@@ -67,7 +67,8 @@ main {
     flex-direction: column;
     width: 100%;
     box-sizing: border-box;
-    padding: 10px; /* Відступи від країв екрана */
+    padding: 10px;
+    min-height: 0; /* Життєво важливо: дозволяє блоку стискатися і не виштовхувати футер */
 }
 
 footer {
@@ -79,9 +80,9 @@ footer {
     align-items: center;
     box-shadow: 0 -5px 15px rgba(0,0,0,0.5);
     z-index: 10;
-    min-height: 180px;
     width: 100%;
     box-sizing: border-box;
+    /* Я прибрав жорсткий min-height: 180px, щоб підвал адаптувався під контент */
 }
 
 .btn {
@@ -136,20 +137,23 @@ footer {
 
 #grid {
     display: grid;
-    gap: 4px;
+    gap: 5px;
     margin-bottom: 10px;
     width: 100%;
-    max-width: 450px; /* На ПК поле не буде розтягуватися нескінченно */
+    max-width: 450px;
 }
 
 .cell {
-    width: 100%; /* Бере ширину з колонки гріда */
-    aspect-ratio: 1 / 1; /* Робить ідеальний квадрат автоматично */
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    max-height: 8.5vh; /* Магія №1: клітинка ніколи не перевищить 8.5% висоти екрана */
+    max-width: 65px; /* Магія №2: обмеження для великих моніторів ПК */
+    margin: auto; /* Центрує клітинку всередині колонки, якщо вона стиснулася */
     border: 2px solid rgba(255,255,255,0.2);
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: clamp(1.2rem, 6vw, 2rem); /* Зменшує шрифт на малих екранах */
+    font-size: clamp(1.2rem, 5vw, 2rem);
     font-weight: bold;
     text-transform: uppercase;
     background: rgba(0,0,0,0.2);
@@ -190,20 +194,20 @@ footer {
     color: white;
     border: 1px solid rgba(255,255,255,0.3);
     border-radius: 4px;
-    padding: 0; /* Прибрав бічні відступи, щоб працював flex */
-    height: 48px; /* Задав фіксовану висоту кнопок */
+    padding: 0;
+    height: clamp(35px, 6vh, 48px); /* Магія №3: гумова висота кнопок клавіатури */
     font-size: clamp(0.6rem, 3vw, 0.9rem);
     font-weight: bold;
     cursor: pointer;
     text-transform: uppercase;
     font-family: inherit;
-    flex: 1; /* Кнопки рівномірно ділять ширину екрана */
+    flex: 1;
     max-width: 45px;
     display: flex;
     justify-content: center;
     align-items: center;
     transition: 0.2s;
-    user-select: none; /* Забороняє виділення тексту при швидкому натисканні */
+    user-select: none;
 }
 
 .key.wide {
@@ -217,10 +221,10 @@ footer {
 .key.gray { background: #3a3a3c; border-color: #3a3a3c; }
 
 #message {
-    margin-top: 10px;
+    margin-top: 5px;
     font-weight: bold;
     font-size: clamp(1rem, 4vw, 1.2rem);
-    height: 1.5rem;
+    min-height: 1.5rem;
     color: var(--gold);
     display: block;
     text-align: center;
